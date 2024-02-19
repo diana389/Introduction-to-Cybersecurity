@@ -1,25 +1,25 @@
 # TEMA 1 - ISC 2023
 ### Stefan Diana Maria - 332CC
 
-## -> `CRYPTO ATTACK`
+## 1. CRYPTO ATTACK
 
-Am decodat cele doua hinturi cu cifrul lui Caesar => RSA chosen ciphertext attack
+Am decodat cele doua hinturi cu ***cifrul lui Caesar*** => ***`RSA chosen ciphertext attack`***
 
 Am gasit link-ul urmator, pe care s-a bazat toata rezolvarea: https://crypto.stackexchange.com/questions/2323/how-does-a-chosen-plaintext-attack-on-rsa-work
 
 Dupa ce am decodat in ***base64*** textul din fisierul `message.txt`, am obtinut un json ce contine *'e'*, *'n'* si *'flag'*.
 
-Am creat mai departe un json care contine doar campul *'flag'*. Am inmultit textul criptat cu ***`5^e mod n`*** si am folosit rezultatul pentru a completa flag-ul.
+Am creat mai departe un json care contine doar campul *'flag'*. Am inmultit textul criptat cu ***5^e mod n*** si am folosit rezultatul pentru a completa flag-ul.
 
 Am dat ca input serverului noul json, pentru care am primit ca raspuns sirul decriptat, pe care l-am impartit la ***5*** pentru a obtine doar decriptarea flag-ului.
 
 Flag-ul obtinut este: ***`SpeishFlag{ulT8bYRjg5qhr6UTHm0la8nEi0x3c2mQ}`***.
 
-## -> `LINUX ACL`
+## 2. LINUX ACL
 
-M-am conectat prin ***ssh*** cu cheia privata la `janitor@isc2023.1337.cx`, gasit in `id_rsa.pub`.
+M-am conectat prin ***ssh*** cu cheia privata la `janitor@isc2023.1337.cx`, gasit in ***id_rsa.pub***.
 
-Am intrat in `/usr/local/bin`, cum e indicat in `task.txt`.
+Am intrat in ***/usr/local/bin***, cum e indicat in ***task.txt***.
 
 `robot-sudo` are owner-ul `iamrobot` si grupul `superboss`.
 
@@ -60,14 +60,14 @@ In fisierul `f1n4-b055` am gasit:
 
 => ***10721525985ed26d31c825f32563ed54*** = argument pentru iamrobot
 
-`/etc/dir/ceva/.my.flag` nu poate fi accesat decat de root.
+***/etc/dir/ceva/.my.flag*** nu poate fi accesat decat de root.
 Nu se poate scrie in vacuum-control, deci am facut un nou script
 (vacuum-control2), cu continutul: 
 `/.you.are.never/.gonnafindthis/f1n4-b055 10721525985ed26d31c825f32563ed54`.
 
 Dupa comanda `robot-sudo /usr/local/bin/vacuum-control2`, am obtinut flag-ul: ***`SpeishFlag{CNvBchcXoYWok5s9LB2pjyZkqnozAAoz}`***.
 
-## -> `BINARY EXPLOIT`
+## 3. BINARY EXPLOIT
 
 Am deschis fisierul executabil `casino` si m-am uitat cu ghidra in functia `loop`. 
 Variabila `local_bc` este adresa unde se stocheaza numerele introduse.
